@@ -1,5 +1,3 @@
-from constants import *
-
 class Digraph(object):
     """
     Class of Directed Graphs
@@ -18,6 +16,8 @@ class Digraph(object):
         """
         self._nodes = []
         self._edges = {}
+        self._edgesMins = {}
+        
 
 
     def getEdges(self):
@@ -47,7 +47,9 @@ class Digraph(object):
         mins = edge.getMins()
         if not(src in self._nodes and dest in self._nodes):
             raise ValueError('Node not in graph')
-        self._edges[src].append([dest, mins])
+        self._edges[src].append(dest)
+        self._edgesMins[src] = mins
+        
 
         
     def childrenOf(self, node):
@@ -62,7 +64,7 @@ class Digraph(object):
         result = ''
         for src in self._nodes:
             for dest in self._edges[src]:
-                result = result + src.getName() +' <- ' + str(dest[MINS]) + ' -> ' + dest[EDGE].getName() + '\n'
+                result = result + src.getName() +' <- ' + str(self._edgesMins[src])  +' -> ' + dest.getName() + '\n'
         return result
 
 
