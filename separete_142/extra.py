@@ -84,8 +84,57 @@ def DFS(graph, start, end, path, shortest):
                     
     # the shortest path found so far after running the for cycle
     return shortest
+def DFS_mins(graph, start, end, path, shortest, minTotal, totalMins = 0):
+    """
+    Depth first search in a directed graph
 
- 
+    Requires:
+    graph a Digraph;
+    start and end nodes;
+    path and shortest lists of nodes
+    Ensures:
+    a shortest path from start to end in graph
+    """
+    # To get all the times in the edges
+    edgesMins = graph.getEdgesMins()
+    # Accumulates; start node entered into the path
+    path = path + [start]
+    
+    # Just to keep watching the recursion progressing
+    print('Current DFS path:', printPath(path))
+
+    # Recursion: base
+    # Target node is reached (or initially start and end nodes are the same)
+    if start == end: 
+        return path, minTotal
+
+    # Recursion: step
+    # Target was not reached and start node is not a leaf (i.e. it has children)
+    for node in graph.childrenOf(start):
+        
+        if node not in path: # To avoid cycles
+            if node in edgesMins: # If the node exists in edgeMins a.k.a if it has any follow-up node
+                mins = graph.getEdgesMins()[node]
+                print(mins, node)
+                # Increment total minutes
+                totalMins += mins
+            # Recursive call of DFS function to itself
+            # If target was never reached yet before OR
+            # this path is still the shortest so far
+            if shortest is None or totalMins < minTotal: 
+                newPath, newTotalMins = DFS_mins(graph, node, end, path, shortest, totalMins)
+                # If a new shortest path is found
+                if newPath is not None and (shortest is None or len(newPath) < len(shortest)):
+                    shortest = newPath
+                    minTotal = newTotalMins
+    
+    # The shortest path found so far after running the for cycle
+    return shortest, minTotal
+
+
+
+
+
 # commented
 
 def search(graph, start, end):
@@ -101,8 +150,9 @@ def search(graph, start, end):
 
     # fourth param: accumulator of nodes (to define path)
     # fifth param: witness: keeps best path found so far
-    
-    return DFS(graph, start, end, [], None)
+
+    #return DFS(graph, start, end, [], None, 0)
+    return DFS_mins(graph, start, end, [], None, 0)
 
 
 
@@ -176,9 +226,10 @@ def firstTest():
     g.addEdge(Edge(nodes[3], nodes[4], 3))
     
     print(g)
-    """
-    sp = search(g, nodes[0], nodes[5])
+
+    sp, mins = search(g, nodes[0], nodes[2])
     
-    print('Shortest path found by DFS:', printPath(sp))"""
+    print('Shortest path found by DFS:', printPath(sp))
+    print(mins)
     
 firstTest()

@@ -23,6 +23,9 @@ class Digraph(object):
     def getEdges(self):
         return self._edges
     
+    def getEdgesMins(self):
+        return self._edgesMins
+    
     
     def addNode(self, node):
         """
