@@ -1,7 +1,143 @@
-from Digraph import Digraph
-from Edge import Edge
-from Graph import Graph
-from Node import Node
+class Node(object):
+    """
+    Class of Nodes
+    """
+
+    def __init__(self, name):
+        """
+        Constructs a Node
+        
+        Requires:
+        name is a string
+        Ensures:
+        node such that name == self.getName()
+        """
+        self._name = name
+
+        
+    def getName(self):
+        """
+        Gets the name
+        """
+        return self._name
+
+    
+    def __str__(self):
+        """
+        String representation
+        """
+        return self._name
+
+
+
+class Edge(object):
+    """
+    Class of Edges
+    """
+    
+    def __init__(self, src, dest):
+        """
+        Constructs an Edge
+        
+        Requires:
+        src and dst Nodes
+        Ensures:
+        Edge such that src == self.getSource() and dest == self.getDestination() 
+        """
+        self._src = src
+        self._dest = dest
+
+        
+    def getSource(self):
+        """
+        Gets the source Node
+        """
+        return self._src
+
+    
+    def getDestination(self):
+        """
+        Gets the destination Node
+        """
+        return self._dest
+
+
+    def __str__(self):
+        """
+        String representation
+        """
+        return self._src.getName() + '->' + self._dest.getName()
+
+
+
+class Digraph(object):
+    """
+    Class of Directed Graphs
+    """
+
+
+    #nodes is a list of the nodes in the graph
+    #edges is a dict mapping each node to a list of its children
+    def __init__(self):
+        """
+        Constructs a Directed Graph
+        
+        Ensures:
+        empty Digraph, i.e.
+        Digraph such that [] == self.getNodes() and {} == self.getEdges() 
+        """
+        self._nodes = []
+        self._edges = {}
+
+        
+    def addNode(self, node):
+        """
+        Adds a Node
+        
+        Requires:
+        node is Node not in the digraph yet
+        Ensures:
+        getNodes() == getNodes()@pre.append(node)
+        getEdges[node] == [] 
+        """
+        if node in self._nodes:
+            raise ValueError('Duplicate node')
+        else:
+            self._nodes.append(node)
+            self._edges[node] = []
+
+            
+    def addEdge(self, edge):
+        src = edge.getSource()
+        dest = edge.getDestination()
+        if not(src in self._nodes and dest in self._nodes):
+            raise ValueError('Node not in graph')
+        self._edges[src].append(dest)
+
+        
+    def childrenOf(self, node):
+        return self._edges[node]
+
+    
+    def hasNode(self, node):
+        return node in self._nodes
+
+    
+    def __str__(self):
+        result = ''
+        for src in self._nodes:
+            for dest in self._edges[src]:
+                result = result + src.getName() + '->' + dest.getName() + '\n'
+
+
+
+class Graph(Digraph):
+    def addEdge(self, edge):
+        Digraph.addEdge(self, edge)
+        rev = Edge(edge.getDestination(), edge.getSource())
+        Digraph.addEdge(self, rev)
+
+        
 
 def printPath(path):
     """
@@ -84,58 +220,8 @@ def DFS(graph, start, end, path, shortest):
                     
     # the shortest path found so far after running the for cycle
     return shortest
-def DFS_mins(graph, start, end, path, shortest, minTotal, totalMins=0):
-    """
-    Depth first search in a directed graph with minutes accumulation
 
-    Requires:
-    graph a Digraph;
-    start and end nodes;
-    path and shortest lists of nodes
-    Ensures:
-    a shortest path from start to end in graph along with total minutes
-    """
-    # To get all the times in the edges
-    edgesMins = graph.getEdgesMins()
-    # Accumulates; start node entered into the path
-    path = path + [start]
-    
-    # Just to keep watching the recursion progressing
-    print('Current DFS path:', printPath(path))
-
-    # Recursion: base
-    # Target node is reached (or initially start and end nodes are the same)
-    if start == end: 
-        return path, minTotal
-
-    # Recursion: step
-    # Target was not reached and start node is not a leaf (i.e. it has children)
-    for node in graph.childrenOf(start):
-        
-        if node not in path: # To avoid cycles
-            if node in edgesMins: # If the node exists in edgeMins a.k.a if it has any follow-up node
-                mins = graph.getEdgesMins()[node]
-                print(graph.getEdges()[node])
-                # Increment total minutes
-                totalMins += mins
-            # Recursive call of DFS function to itself
-            # If target was never reached yet before OR
-            # this path is still the shortest so far
-            if shortest is None or totalMins < minTotal: 
-                newPath, newTotalMins = DFS_mins(graph, node, end, path, shortest, minTotal, totalMins)
-                # If a new shortest path is found
-                if newPath is not None and (shortest is None or len(newPath) < len(shortest)):
-                    shortest = newPath
-                    minTotal = newTotalMins
-    
-    # The shortest path found so far after running the for cycle
-    return shortest, minTotal
-
-
-
-
-
-
+ 
 # commented
 
 def search(graph, start, end):
@@ -151,9 +237,8 @@ def search(graph, start, end):
 
     # fourth param: accumulator of nodes (to define path)
     # fifth param: witness: keeps best path found so far
-
-    #return DFS(graph, start, end, [], None, 0)
-    return DFS_mins(graph, start, end, [], None, 0)
+    
+    return DFS(graph, start, end, [], None)
 
 
 
@@ -188,12 +273,13 @@ def testSP():
     g.addEdge(Edge(nodes[6],nodes[5]))
     
     print(g)
-    """
+    
     sp = search(g, nodes[0], nodes[5])
     
-    print('Shortest path found by DFS:', printPath(sp))"""
+    print('Shortest path found by DFS:', printPath(sp))
 
 
-#testSP()
+testSP()
 
+    
     
