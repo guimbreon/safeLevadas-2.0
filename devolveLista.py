@@ -322,7 +322,7 @@ def bigTest():
 
     print(g)
 
-    sp= search(g, nodes[0], nodes[5])
+    sp= search(g, nodes[1], nodes[17])
     count = 1
     for item in sp:
         print("\n")
