@@ -1,0 +1,4 @@
+#Id, Name, Connected:
+A, Porto,  [(B, 12)]
+B, Lisboa, [(A, 12), (C, 7)]
+C, Queimadas, [(B, 7)]

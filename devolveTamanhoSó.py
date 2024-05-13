@@ -270,13 +270,14 @@ def firstTest():
     for n in nodes:
         g.addNode(n)
         
-    g.addEdge(Edge(nodes[0], nodes[1], 2))
-    g.addEdge(Edge(nodes[1], nodes[2], 4))
-    g.addEdge(Edge(nodes[1], nodes[3], 5))
-    g.addEdge(Edge(nodes[2], nodes[6], 2))
+    g.addEdge(Edge(nodes[0], nodes[1], 2)) # A - B 
+    g.addEdge(Edge(nodes[1], nodes[2], 4)) # B - C
+    g.addEdge(Edge(nodes[1], nodes[3], 5)) 
+    g.addEdge(Edge(nodes[2], nodes[6], 2)) # C - F
     g.addEdge(Edge(nodes[3], nodes[5], 12))
     g.addEdge(Edge(nodes[3], nodes[4], 3))
     g.addEdge(Edge(nodes[5], nodes[6], 4))
+    g.addEdge(Edge(nodes[6], nodes[5], 4)) # F - G
     
     print(g)
 
