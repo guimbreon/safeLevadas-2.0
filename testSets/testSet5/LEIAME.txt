@@ -1,0 +1,1 @@
+#testa quando as estações não comunicam entre si

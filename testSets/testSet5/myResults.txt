@@ -1,0 +1,6 @@
+# Moinho - Rabacal
+Moinho and Rabacal do not communicate
+# Rabacal - Ponta do Sol
+15, Rabacal, Ponta do Sol
+# Boavista - Ponta do Sol
+Boavista and Ponta do Sol do not communicate
