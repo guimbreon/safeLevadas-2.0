@@ -1,0 +1,7 @@
+#Id, Name, Connected:
+A, Funchal, [(B, 20), (D, 10), (F, 5)]
+B, Machico, [(C, 35), (D, 15)]
+C, Ponta do Sol, [(E, 15), (D, 45)]
+D, Ribeira Brava, [(F, 5)]
+E, Calheta, []
+F, Queimadas, []
