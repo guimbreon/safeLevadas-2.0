@@ -43,7 +43,7 @@ def buildNetwork(dataLN):
 
 
 
-filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/testSets/myLevadasNetwork.txt"
+filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/testSets/testSet1/myLevadasNetwork.txt"
 dataLN = readLN(filePath)
 dig = buildNetwork(dataLN)
 
