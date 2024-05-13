@@ -1,0 +1,7 @@
+#Id, Name, Connected:
+A, Santana, [(B, 10), (C, 20)]
+B, Funchal, [(A, 10), (D, 30)]
+C, Câmara de Lobos, [(A, 20), (F, 10)]
+D, Ribeira Brava, [(B, 30), (E, 25)]
+E, Porto Moniz, [(D, 25), (F, 35)]
+F, Calheta, [(C, 10), (E, 35)]
