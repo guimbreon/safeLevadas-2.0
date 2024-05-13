@@ -1,0 +1,6 @@
+# Santa Cruz - Machico
+20, Santa Cruz, Machico
+80, Santa Cruz, Calheta, São Vicente, Porto Santo, Machico
+# Calheta - Porto Santo
+45, Calheta, São Vicente, Porto Santo
+55, Calheta, Santa Cruz, Machico, Porto Santo

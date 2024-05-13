@@ -1,0 +1,6 @@
+#testa quando existem menos de 3 caminhos possíveis
+
+#testa quando são registadas todas as direções (ex: A - B e B - A)
+
+#testa o formato (ex: A - DE), ou seja, quando a partir de um dado
+ponto, existem dois pontos com a mesma duração666666666666666 
