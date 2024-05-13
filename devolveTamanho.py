@@ -19,15 +19,15 @@ class Edge(object):
         """
         Requires: src and dst Nodes
         """
-        self.src = src
-        self.dest = dest
+        self._src = src
+        self._dest = dest
         self._mins = mins
         
     def getSource(self):
-        return self.src
+        return self._src
     
     def getDestination(self):
-        return self.dest
+        return self._dest
     
     def getMins(self):
         return self._mins 
@@ -36,7 +36,7 @@ class Edge(object):
             """
             String representation
             """
-            return self._src.getName() +'<-' + self.getMins() + '->' + self._dest.getName()
+            return self._src.getName() +' <- ' + self.getMins() + ' -> ' + self._dest.getName()
     
 
 
@@ -270,7 +270,7 @@ def firstTest():
     for n in nodes:
         g.addNode(n)
         
-    g.addEdge(Edge(nodes[0], nodes[1], 2)) # A - B 
+    g.addEdge(Edge(nodes[0], nodes[1], 2)) # A - B
     g.addEdge(Edge(nodes[1], nodes[2], 4)) # B - C
     g.addEdge(Edge(nodes[1], nodes[3], 5)) 
     g.addEdge(Edge(nodes[2], nodes[6], 2)) # C - F
@@ -286,4 +286,4 @@ def firstTest():
     print('Shortest path found by DFS:', printPath(sp))
     print(mins)
     
-firstTest()
+#firstTest()
