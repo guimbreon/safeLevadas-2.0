@@ -24,7 +24,8 @@ def buildEdges(dataLN, nodes):
         for i in item[2].split("), "):
             i = i.split(", ")
             if i[0].replace("(","") != '':
-                edges.append(Edge(nodes[i[0].replace("(","")], nodes[item[0]], i[1].replace(")","")))
+                #Edge -> nodes[i[0].replace("(","")]: para onde vai,  nodes[item[0]]: origem, i[1].replace(")",""):tempo
+                edges.append(Edge(nodes[item[0]], nodes[i[0].replace("(","")], i[1].replace(")","")))
     return edges
 
 
@@ -43,7 +44,9 @@ def buildNetwork(dataLN):
 
 
 
-filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/testSets/testSet1/myLevadasNetwork.txt"
+#filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/testSets/testSet1/myLevadasNetwork.txt"
+filePath = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets/testSet1/myLevadasNetwork.txt"
+
 dataLN = readLN(filePath)
 dig = buildNetwork(dataLN)
 

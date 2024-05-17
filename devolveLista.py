@@ -33,10 +33,10 @@ class Edge(object):
         return self._mins 
     
     def __str__(self):
-            """
-            String representation
-            """
-            return self._src.getName() +'<-' + self.getMins() + '->' + self._dest.getName()
+        """
+        String representation
+        """
+        return self._src.getName() +'<-' + self.getMins() + '->' + self._dest.getName()
     
 
 
@@ -250,7 +250,6 @@ def firstTest():
     g.addEdge(Edge(nodes[5], nodes[6], 4))
     g.addEdge(Edge(nodes[6], nodes[5], 4))
     
-    print(g)
 
     sp= search(g, nodes[0], nodes[5])
     count = 1
@@ -333,4 +332,4 @@ def bigTest():
     #print('Shortest path found by DFS:', printPath(sp))
     #print(mins)
     
-bigTest()
+#bigTest()

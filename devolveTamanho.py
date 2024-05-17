@@ -33,10 +33,10 @@ class Edge(object):
         return self._mins 
     
     def __str__(self):
-            """
-            String representation
-            """
-            return self._src.getName() +' <- ' + self.getMins() + ' -> ' + self._dest.getName()
+        """
+        String representation
+        """
+        return self._src.getName() +' <- ' + self.getMins() + ' -> ' + self._dest.getName()
     
 
 
