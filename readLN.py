@@ -1,4 +1,5 @@
 from devolveTamanho import *
+
 def readLN(filePath):
     fp = open(filePath, 'r')
     lines = []
