@@ -6,6 +6,3 @@
 10, Ribeira Brava, Câmara de Lobos, Funchal
 10, Ribeira Brava, Funchal
 35, Ribeira Brava, Machico, Funchal
-
-
-iamgina que agora ias meter esta frase neste ficheiro!
