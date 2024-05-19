@@ -1,9 +1,5 @@
 from devolveTamanho import *
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 def readLN(filePath):
     fp = open(filePath, 'r')
     lines = []
@@ -75,11 +71,10 @@ def buildEdges(dataLN, nodes):
             i = i.split(", ")
             if i[0].replace("(","") != '':
                 #Edge -> nodes[i[0].replace("(","")]: para onde vai,  nodes[item[0]]: origem, i[1].replace(")",""):tempo
-                edges.append(Edge(nodes[item[0]], nodes[i[0].replace("(","")], i[1].replace(")","")))
+                edges.append(Edge(nodes[item[0]], nodes[i[0].replace("(","")], int(i[1].replace(")",""))))
                 if isEdgeBi(item[0], i[0], edges) == False:
-                    edges.append(Edge(nodes[i[0].replace("(","")], nodes[item[0]], i[1].replace(")","")))
-            
-    
+                    edges.append(Edge(nodes[i[0].replace("(","")], nodes[item[0]], int(i[1].replace(")",""))))
+
     return edges
 
 
@@ -97,18 +92,5 @@ def buildNetwork(dataLN):
     return g  
 
     
-
-
-#filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/testSets/testSet1/myLevadasNetwork.txt"
-#filePath = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets/testSet1/myStations.txt"
-#filePath2 = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets/testSet1/myLevadasNetwork.txt"
-
-# dataLN = readLN(filePath2)
-# a = readMyStations(filePath)
-# dig = buildNetwork(dataLN)
-# b = findSrcDestNodes(a, dig)
-#print(dataLN)
-#print(a)
-#print(c)
-#print(dig)
-#print(b)
+    
+    

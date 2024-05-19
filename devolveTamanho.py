@@ -173,6 +173,48 @@ def DFS_mins(graph, start, end, path, shortest, totalMins, minTotal=float('inf')
     path = path + [start]
     
     # Just to keep watching the recursion progressing
+
+    # Recursion: base
+    # Target node is reached (or initially start and end nodes are the same)
+    if start == end: 
+        return path, totalMins
+
+    # Recursion: step
+    # Target was not reached and start node is not a leaf (i.e. it has children)
+    for node in graph.childrenOf(start):
+        
+        if node not in path: # To avoid cycles
+            # Calculating total minutes for the current path
+            mins = graph.getEdgesMins()[(start, node)]
+            newTotalMins = totalMins + mins
+            
+            # Recursive call of DFS function to itself
+            # If target was never reached yet before OR
+            # this path is still the shortest so far
+            if shortest is None or newTotalMins < minTotal: 
+                newPath, newTotalMins = DFS_mins(graph, node, end, path, shortest, newTotalMins, minTotal)
+                # If a new shortest path is found
+                if newPath is not None and (shortest is None or len(newPath) < len(shortest)):
+                    shortest = newPath
+                    minTotal = newTotalMins
+    
+    # The shortest path found so far after running the for cycle
+    return shortest, minTotal
+def DFS_mins_print(graph, start, end, path, shortest, totalMins, minTotal=float('inf')):
+    """
+    Depth first search in a directed graph with minutes accumulation
+
+    Requires:
+    graph a Digraph;
+    start and end nodes;
+    path and shortest lists of nodes
+    Ensures:
+    a shortest path from start to end in graph along with total minutes
+    """
+    # Accumulates; start node entered into the path
+    path = path + [start]
+    
+    # Just to keep watching the recursion progressing
     print('Current DFS path:', printPath(path))
 
     # Recursion: base
@@ -286,4 +328,4 @@ def firstTest():
     print('Shortest path found by DFS:', printPath(sp))
     print(mins)
     
-#firstTest()
+firstTest()
