@@ -1,4 +1,4 @@
-from devolveTamanho import *
+from devolveLista import *
 
 def readLN(filePath):
     fp = open(filePath, 'r')

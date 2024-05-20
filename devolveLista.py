@@ -13,7 +13,7 @@ class Node(object):
         return self._id
     
     def __str__(self):
-        return self.name
+        return "ID: " + self._id + "\nName: " + self.name + "\n"
 
 
 
@@ -68,6 +68,12 @@ class Digraph(object):
 
     def getNodes(self):
         return self._nodes
+    
+    def getNode(self, id):
+        for node in self._nodes:
+            if node._id == id:
+                return node
+        return None
 
     def getEdges(self):
         return self._edges
