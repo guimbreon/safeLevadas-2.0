@@ -55,11 +55,11 @@ def findSrcDestNodes(srcs_and_dests, network):
     return paired_nodes
 
 
-def isEdgeBi(inFileSrc, inFileDest, edges):
-    for edge in edges:
-        if edge.getSource() != inFileSrc and edge.getDestination() != inFileDest:
-            return False
-    return True
+# def isEdgeBi(inFileSrc, inFileDest, edges):
+#     for edge in edges:
+#         if edge.getSource() != inFileSrc and edge.getDestination() != inFileDest:
+#             return False
+#     return True
 
 
 def buildEdges(dataLN, nodes):
@@ -72,8 +72,8 @@ def buildEdges(dataLN, nodes):
             if i[0].replace("(","") != '':
                 #Edge -> nodes[i[0].replace("(","")]: para onde vai,  nodes[item[0]]: origem, i[1].replace(")",""):tempo
                 edges.append(Edge(nodes[item[0]], nodes[i[0].replace("(","")], int(i[1].replace(")",""))))
-                if isEdgeBi(item[0], i[0], edges) == False:
-                    edges.append(Edge(nodes[i[0].replace("(","")], nodes[item[0]], int(i[1].replace(")",""))))
+#                 if isEdgeBi(item[0], i[0], edges) == False:
+#                     edges.append(Edge(nodes[i[0].replace("(","")], nodes[item[0]], int(i[1].replace(")",""))))
 
     return edges
 

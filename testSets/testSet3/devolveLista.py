@@ -1,16 +1,13 @@
 class Node(object):
-    def __init__(self, id, name):
+    def __init__(self, letter, name):
         """
         Requires: name is a string
         """
         self.name = name
-        self._id = id
+        self._letter = letter
         
     def getName(self):
         return self.name
-    
-    def getId(self):
-        return self._id
     
     def __str__(self):
         return self.name
@@ -36,10 +33,10 @@ class Edge(object):
         return self._mins 
     
     def __str__(self):
-        """
-        String representation
-        """
-        return self._src.getName() +'<-' + self.getMins() + '->' + self._dest.getName()
+            """
+            String representation
+            """
+            return self._src.getName() +'<-' + self.getMins() + '->' + self._dest.getName()
     
 
 
@@ -65,15 +62,6 @@ class Digraph(object):
         self._edgesMins = {}
         
 
-
-    def getNodes(self):
-        return self._nodes
-    
-    def getNode(self, id):
-        for node in self._nodes:
-            if node._id == id:
-                return node
-        return None
 
     def getEdges(self):
         return self._edges
@@ -170,7 +158,7 @@ def DFS(graph, start, end, path, shortest):
                     shortest = newPath
     return shortest
 
-def DFS_mins_print(graph, start, end, path, shortest_paths, totalMins, minTotal=float('inf')):
+def DFS_mins(graph, start, end, path, shortest_paths, totalMins, minTotal=float('inf')):
     """
     Depth first search in a directed graph with minutes accumulation
 
@@ -197,34 +185,8 @@ def DFS_mins_print(graph, start, end, path, shortest_paths, totalMins, minTotal=
                 shortest_paths = shortest_paths[:3]
     return shortest_paths
 
-def DFS_mins(graph, start, end, path, shortest_paths, totalMins, minTotal=float('inf')):
-    """
-    Depth first search in a directed graph with minutes accumulation
 
-    Requires:
-    graph a Digraph;
-    start and end nodes;
-    path and shortest lists of nodes
-    Ensures:
-    a shortest path from start to end in graph along with total minutes
-    """
-    path = path + [start]
-    if start == end:
-        shortest_paths.append((path, totalMins))
-        return shortest_paths
-
-    for node in graph.childrenOf(start):
-        if node not in path:
-            mins = graph.getEdgesMins()[(start, node)]
-            new_total_mins = totalMins + mins
-            if len(shortest_paths) < 3 or new_total_mins < shortest_paths[-1][1]:
-                shortest_paths = DFS_mins(graph, node, end, path, shortest_paths, new_total_mins, minTotal)
-                shortest_paths.sort(key=lambda x: x[1])
-                shortest_paths = shortest_paths[:3]
-    return shortest_paths
-
-
-def search2(graph, start, end):
+def search(graph, start, end):
     shortest_paths = []
     shortest_paths = DFS_mins(graph, start, end, [], shortest_paths, 0)
     return shortest_paths
@@ -288,6 +250,7 @@ def firstTest():
     g.addEdge(Edge(nodes[5], nodes[6], 4))
     g.addEdge(Edge(nodes[6], nodes[5], 4))
     
+    print(g)
 
     sp= search(g, nodes[0], nodes[5])
     count = 1
@@ -300,7 +263,7 @@ def firstTest():
     #print('Shortest path found by DFS:', printPath(sp))
     #print(mins)
     
-#firstTest()
+firstTest()
 
 
 def bigTest():
@@ -370,4 +333,4 @@ def bigTest():
     #print('Shortest path found by DFS:', printPath(sp))
     #print(mins)
     
-#bigTest()
+bigTest()

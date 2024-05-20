@@ -5,7 +5,6 @@ from readLN import *
 def fazerFuncionar(myStations, dig):
     todasOsCaminhos = []
     for pairOfStations in myStations:
-        print()
         todasOsCaminhos.append(search2(dig, pairOfStations[0], pairOfStations[1]))
     return todasOsCaminhos
 
@@ -27,19 +26,10 @@ b = findSrcDestNodes(a, dig)
 #print(dig)
 
 
-for node in dig.getNodes():
-    print(node)
-print(dig.getNode("A"))
-print(dig.getNode("B"))
-print(dig.getNode("C"))
-print(dig.getNode("D"))
-print(dig.getNode("E"))
 
 todasOsCaminhos = fazerFuncionar(b, dig)
 
 
-
-"""
 print(todasOsCaminhos)
 for caminho in todasOsCaminhos:
     count = 1
@@ -48,4 +38,4 @@ for caminho in todasOsCaminhos:
         print("path number: ", count)
         print(printPath(item[0]))
         print(item[1])
-        count += 1"""
+        count += 1
