@@ -8,9 +8,9 @@ def fazerFuncionar(myStations, dig):
         todasOsCaminhos.append(search2(dig, pairOfStations[0], pairOfStations[1]))
     return todasOsCaminhos
 
-filePath2 = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/testSets/testSet1/myLevadasNetwork.txt"
+filePath2 = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/test_set/myLevadasNetwork.txt"
 
-filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/testSets/testSet1/myStations.txt"
+filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/test_set/myStations_A.txt"
 
 
 #filePath = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets/testSet3/myStations.txt"
