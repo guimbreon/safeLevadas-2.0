@@ -5,7 +5,10 @@ from readLN import *
 def fazerFuncionar(myStations, dig):
     todasOsCaminhos = []
     for pairOfStations in myStations:
-        todasOsCaminhos.append(search2(dig, pairOfStations[0], pairOfStations[1]))
+        if pairOfStations != "out of network":
+            todasOsCaminhos.append(search2(dig, pairOfStations[0], pairOfStations[1]))
+        else:
+            todasOsCaminhos.append("out of network")
     return todasOsCaminhos
 
 filePath2 = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/test_set/myLevadasNetwork.txt"
@@ -33,9 +36,13 @@ todasOsCaminhos = fazerFuncionar(b, dig)
 
 for caminho in todasOsCaminhos:
     count = 1
-    for item in caminho:
+    if caminho != "out of network":
+        for item in caminho:
+            print("\n")
+            print("path number: ", count)
+            print(printPath(item[0]))
+            print(item[1])
+            count += 1
+    else:
         print("\n")
-        print("path number: ", count)
-        print(printPath(item[0]))
-        print(item[1])
-        count += 1
+        print(caminho)

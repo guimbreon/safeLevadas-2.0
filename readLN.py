@@ -52,6 +52,8 @@ def findSrcDestNodes(srcs_and_dests, network):
         # Adicionar o par (src_node, dest_node) à lista se ambos forem encontrados
         if src_node and dest_node:
             paired_nodes.append([src_node, dest_node])
+        else:
+            paired_nodes.append("out of network") # se ele n entra no if é pq um dos nodes n existe
     return paired_nodes
 
 def isEdgeBi(inFileSrc, inFileDest, edges):
