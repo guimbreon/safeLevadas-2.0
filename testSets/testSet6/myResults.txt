@@ -1,0 +1,16 @@
+# Lisboa - Évora
+120, Lisboa, Portalegre, Beja, Évora
+120, Lisboa, Portalegre, Setúbal, Évora
+160, Lisboa, Portalegre, Setúbal, Santa Cruz, Espinhos, Fátima, Évora
+# Beja - Barreiro
+110, Beja, Portalegre, Setúbal, Santa Cruz, Barreiro
+120, Beja. Portalegre, Setúbal, Penafiel, Santa Cruz, Barreiro
+130, Beja, Évora, Setúbal, Santa Cruz, Barreiro
+# Penafiel - Porto
+190, Penafiel, Setúbal, Évora, Bragança, Loures, Leiria, Porto
+200, Penafiel, Santa Cruz, Setúbal, Évora, Bragança, Loures, Leiria, Porto
+220, Penafiel, Santa Cruz, Espinhos, Fátima, Évora, Bragança, Loures, Leiria, Porto
+# Coimbra - Tomar
+150, Coimbra, Portalegre, Setúbal, Santa Cruz, Espinhos, Fátima, Tomar
+210, Coimbra, Portalegre, Beja, Évora, Fátima, Tomar
+210, Coimbra, Portalegre, Setúbal, Évora, Fátima, Tomar
