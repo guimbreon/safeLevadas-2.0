@@ -217,9 +217,9 @@ def DFS_mins(graph, start, end, path, shortest_paths, totalMins, minTotal=float(
         if node not in path:
             mins = graph.getEdgesMins()[(start, node)]
             new_total_mins = totalMins + mins
-            if len(shortest_paths) < 3 or new_total_mins < shortest_paths[-1][1]:
+            if len(shortest_paths) < 3 or new_total_mins <= shortest_paths[-1][1]:
                 shortest_paths = DFS_mins(graph, node, end, path, shortest_paths, new_total_mins, minTotal)
-                shortest_paths.sort(key=lambda x: (x[1], -len(x[0])))
+                shortest_paths.sort(key=lambda x: (x[1], -len(x[0]), x[0][1].name))
                 shortest_paths = shortest_paths[:3]
     return shortest_paths
 

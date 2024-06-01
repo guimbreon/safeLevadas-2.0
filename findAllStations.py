@@ -20,20 +20,20 @@ def fazerFuncionar(myStations, dig):
 
 #filePath = "l:/Aulas/Ano1/2Sem/ProgII/Projeto2/test_sets - VI/testset3/myStations_C.txt"
 
-filePath = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/test_set/myStations_B.txt"
-filePath2 = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/test_set/myLevadasNetwork.txt"
+# filePath = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/test_set/myStations_C.txt"
+# filePath2 = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/test_set/myLevadasNetwork.txt"
 
-# filePath = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets - VI/testset4/myStations.txt"
-# filePath2 = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets - VI/testset4/myLevadasNetwork.txt"
+filePath = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets - VI/testset7/myStations.txt"
+filePath2 = "C:/Users/vitor/Downloads/Git/prog2_Proj2_LTI/testSets - VI/testset7/myLevadasNetwork.txt"
 
 dataLN = readLN(filePath2)
 a = readMyStations(filePath)
 dig = buildNetwork(dataLN)
 b = findSrcDestNodes(a, dig)
 #print(dataLN)
-#print(b)
+#print(a)
 #print(c)
-print(dig)
+#print(dig)
 
 
 
