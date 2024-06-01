@@ -7,7 +7,7 @@ def writeMS(objeto, myStations, allStations, filePath):
     lines = []
 
     for i in range(len(objeto)):
-        lines.append("#" + myStations[i][0] + " - " + myStations[i][1])
+        lines.append("# " + myStations[i][0] + " - " + myStations[i][1])
         if objeto[i] != "out of network" and objeto[i] != "do not communicate":
             for caminho, tempo in objeto[i]:
                 caminhoStr = str(tempo) + ", "
