@@ -2,7 +2,7 @@ from devolveLista import *
 from constants import * 
 from readLN import * 
 from findAllStations import *
-
+from constants import *
 def writeMS(objeto, myStations, allStations, filePath):
     lines = []
 
@@ -10,7 +10,7 @@ def writeMS(objeto, myStations, allStations, filePath):
         #i is the index of the lists, that will indicate which stations we are working on at the moment
         #this will be used for myStations, objeto and allStations, since they are organized
         #so that the items are coordinated, which means, "i" will always be related to the same src-dest search
-        lines.append("# " + myStations[i][0] + " - " + myStations[i][1])
+        lines.append("# " + myStations[i][SRC] + " - " + myStations[i][DST])
         if objeto[i] != "out of network" and objeto[i] != "do not communicate":
             for caminho, tempo in objeto[i]:
                 caminhoStr = str(tempo) + ", "
@@ -25,11 +25,11 @@ def writeMS(objeto, myStations, allStations, filePath):
                 lines.append(caminhoStr)
         elif objeto[i] == "out of network":
             if allStations[i][1] == "sour":  # source doesn't exist
-                lines.append(myStations[i][0] + " " + objeto[i])
+                lines.append(myStations[i][SRC] + " " + objeto[i])
             else:
-                lines.append(myStations[i][1] + " " + objeto[i])
+                lines.append(myStations[i][DST] + " " + objeto[i])
         elif objeto[i] == "do not communicate":
-            lines.append(myStations[i][0] + " and " + myStations[i][1] + " " + objeto[i])
+            lines.append(myStations[i][SRC] + " and " + myStations[i][DST] + " " + objeto[i])
 
     with open(filePath, "w") as fp:
         fp.write("\n".join(lines))

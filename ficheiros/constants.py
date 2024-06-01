@@ -14,6 +14,5 @@ PATH = 0
 
 #writeMS.py
 
-FIRST = 0
-LISTA = 0
-TEMPO = 1
+SRC= 0
+DST = 1

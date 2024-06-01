@@ -1,0 +1,8 @@
+# Ponta do Sol - Funchal
+55, Ponta do Sol, Machico, Funchal
+55, Ponta do Sol, Ribeira Brava, Funchal
+60, Ponta do Sol, Ribeira Brava, Machico, Funchal
+# Ribeira Brava - Funchal
+10, Ribeira Brava, Câmara de Lobos, Funchal
+10, Ribeira Brava, Funchal
+35, Ribeira Brava, Machico, Funchal

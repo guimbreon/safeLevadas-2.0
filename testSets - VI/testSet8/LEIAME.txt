@@ -1,0 +1,8 @@
+#testa quando existe caminhos com a mesma duração
+e que passam pelo mesmo número de estações (Ponta do Sol - Funchal)
+
+#testa quando existe caminhos com a mesma duração mas que passam pelo
+número de estações diferentes (Ribeira Brava - Funchal)
+
+#testa quando só é declarada apenas uma direção, ex: A - B, 
+(não declara B - A)
