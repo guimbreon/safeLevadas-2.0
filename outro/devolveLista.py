@@ -39,7 +39,7 @@ class Edge(object):
         """
         String representation
         """
-        return str(self.src.getName()) +'<-' + str(self.getMins()) + '->' + str(self.dest.getName())
+        return self._src.getName() +'<-' + self.getMins() + '->' + self._dest.getName()
     
 
 
@@ -68,12 +68,6 @@ class Digraph(object):
 
     def getNodes(self):
         return self._nodes
-    
-    def getNode(self, id):
-        for node in self._nodes:
-            if node._id == id:
-                return node
-        return None
 
     def getEdges(self):
         return self._edges
@@ -193,7 +187,7 @@ def DFS_mins_print(graph, start, end, path, shortest_paths, totalMins, minTotal=
             new_total_mins = totalMins + mins
             if len(shortest_paths) < 3 or new_total_mins < shortest_paths[-1][1]:
                 shortest_paths = DFS_mins(graph, node, end, path, shortest_paths, new_total_mins, minTotal)
-                shortest_paths.sort(key=lambda x: (x[1], -len(x[0])))
+                shortest_paths.sort(key=lambda x: x[1])
                 shortest_paths = shortest_paths[:3]
     return shortest_paths
 
@@ -219,155 +213,16 @@ def DFS_mins(graph, start, end, path, shortest_paths, totalMins, minTotal=float(
             new_total_mins = totalMins + mins
             if len(shortest_paths) < 3 or new_total_mins < shortest_paths[-1][1]:
                 shortest_paths = DFS_mins(graph, node, end, path, shortest_paths, new_total_mins, minTotal)
-                shortest_paths.sort(key=lambda x: (x[1], -len(x[0])))
+                shortest_paths.sort(key=lambda x: x[1])
                 shortest_paths = shortest_paths[:3]
     return shortest_paths
 
 
-def search2(graph, start, end):
+def searchMins(graph, start, end):
     shortest_paths = []
     shortest_paths = DFS_mins(graph, start, end, [], shortest_paths, 0)
-    return shortest_paths
+    if shortest_paths == []:    
+        return "do not communicate"
+    else:
+        return shortest_paths
 
-
-
-
-def testSP():
-    nodes = []
-    for name in range(6): #Create 6 nodes
-        nodes.append(Node(str(name)))
-    g = Digraph()
-    for n in nodes:
-        g.addNode(n)
-    g.addEdge(Edge(nodes[0],nodes[1]))
-    g.addEdge(Edge(nodes[1],nodes[2]))
-    g.addEdge(Edge(nodes[2],nodes[3]))
-    g.addEdge(Edge(nodes[2],nodes[4]))
-    g.addEdge(Edge(nodes[3],nodes[4]))
-    g.addEdge(Edge(nodes[3],nodes[5]))
-    g.addEdge(Edge(nodes[0],nodes[2]))
-    g.addEdge(Edge(nodes[1],nodes[0]))
-    g.addEdge(Edge(nodes[3],nodes[1]))
-    g.addEdge(Edge(nodes[4],nodes[0]))
-    sp = search(g, nodes[0], nodes[5])
-    print('Shortest path found by DFS:', printPath(sp))
-
-
-#testSP()
-
-    
-    
-
-    
-def firstTest():
-    """
-    first Test out of the voices of my head
-    """
-    nodes =  []
-    
-    nodes.append(Node("A", "Lisboa")) #0
-    nodes.append(Node("B", "Seixal")) #1
-    nodes.append(Node("C", "Porto")) #2
-    nodes.append(Node("D", "Pico Ruivo")) #3
-    nodes.append(Node("E", "Coimbra")) #4
-    nodes.append(Node("G", "Braga")) #5
-    nodes.append(Node("F", "Faro")) #6
-
-    
-    g = Digraph()
-    
-    for n in nodes:
-        g.addNode(n)
-        
-    g.addEdge(Edge(nodes[0], nodes[1], 2))
-    g.addEdge(Edge(nodes[1], nodes[2], 4))
-    g.addEdge(Edge(nodes[1], nodes[3], 5))
-    g.addEdge(Edge(nodes[2], nodes[6], 2))
-    g.addEdge(Edge(nodes[3], nodes[5], 12))
-    g.addEdge(Edge(nodes[3], nodes[4], 3))
-    g.addEdge(Edge(nodes[5], nodes[6], 4))
-    g.addEdge(Edge(nodes[6], nodes[5], 4))
-    
-
-    sp= search(g, nodes[0], nodes[5])
-    count = 1
-    for item in sp:
-        print("\n")
-        print("path number: ", count)
-        print(printPath(item[0]))
-        print(item[1])
-        count += 1
-    #print('Shortest path found by DFS:', printPath(sp))
-    #print(mins)
-    
-#firstTest()
-
-
-def bigTest():
-    """
-    tests all
-    """
-
-    nodes = []
-
-    nodes.append(Node("A", "Lisboa")) #0
-    nodes.append(Node("B", "Portalegre")) #1
-    nodes.append(Node("C", "Coimbra")) #2
-    nodes.append(Node("D", "Beja")) #3
-    nodes.append(Node("E", "Setúbal")) #4
-    nodes.append(Node("F", "Évora")) #5
-    nodes.append(Node("G", "Bragança")) #6
-    nodes.append(Node("H", "Loures")) #7
-    nodes.append(Node("I", "Leiria")) #8
-    nodes.append(Node("J", "Porto")) #9
-    nodes.append(Node("K", "Fátima")) #10
-    nodes.append(Node("L", "Tomar")) #11
-    nodes.append(Node("M", "Espinhos")) #12
-    nodes.append(Node("N", "Barreiro")) #13
-    nodes.append(Node("O", "Santa Cruz")) #14
-    nodes.append(Node("P", "Penafiel")) #15
-    nodes.append(Node("Q", "Chaves")) #16
-    nodes.append(Node("R", "Almada")) #17
-    nodes.append(Node("S", "Queluz")) #18
-    
-    g = Digraph()
-
-    for n in nodes:
-        g.addNode(n)
-
-    g.addEdge(Edge(nodes[0], nodes[1], 3))
-    g.addEdge(Edge(nodes[1], nodes[2], 3))
-    g.addEdge(Edge(nodes[1], nodes[3], 3))
-    g.addEdge(Edge(nodes[1], nodes[4], 5))
-    g.addEdge(Edge(nodes[3], nodes[5], 6))
-    g.addEdge(Edge(nodes[4], nodes[5], 4))
-    g.addEdge(Edge(nodes[4], nodes[15], 40))
-    g.addEdge(Edge(nodes[4], nodes[14], 10))
-    g.addEdge(Edge(nodes[5], nodes[6], 2))
-    g.addEdge(Edge(nodes[5], nodes[10], 50))
-    g.addEdge(Edge(nodes[6], nodes[7], 6))
-    g.addEdge(Edge(nodes[7], nodes[8], 3))
-    g.addEdge(Edge(nodes[8], nodes[9], 3))
-    g.addEdge(Edge(nodes[10], nodes[11], 4))
-    g.addEdge(Edge(nodes[10], nodes[12], 1))
-    g.addEdge(Edge(nodes[12], nodes[14], 2))
-    g.addEdge(Edge(nodes[14], nodes[13], 2))
-    g.addEdge(Edge(nodes[14], nodes[15], 10))
-    g.addEdge(Edge(nodes[15], nodes[16], 2))
-    g.addEdge(Edge(nodes[16], nodes[17], 5))
-    g.addEdge(Edge(nodes[17], nodes[18], 4))
-
-    print(g)
-
-    sp= search(g, nodes[1], nodes[17])
-    count = 1
-    for item in sp:
-        print("\n")
-        print("path number: ", count)
-        print(printPath(item[0]))
-        print(item[1])
-        count += 1
-    #print('Shortest path found by DFS:', printPath(sp))
-    #print(mins)
-    
-#bigTest()

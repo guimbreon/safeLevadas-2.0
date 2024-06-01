@@ -1,6 +1,6 @@
 #Id, Name, Connected:
 A, Machico, [(B, 15), (C, 20)]
 B, Porto Santo, [(A, 15), (E, 35)]
-C, Santa Cruz, [(AD, 20)]
+C, Santa Cruz, [(D, 20), (A, 20)]
 D, Calheta, [(C, 20), (E, 10)]
 E, São Vicente, [(D, 10), (B, 35)]

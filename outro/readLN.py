@@ -52,41 +52,30 @@ def findSrcDestNodes(srcs_and_dests, network):
         # Adicionar o par (src_node, dest_node) à lista se ambos forem encontrados
         if src_node and dest_node:
             paired_nodes.append([src_node, dest_node])
-        else:
-            if not src_node:
-                paired_nodes.append("out of network")
-            if not dest_node:
-                paired_nodes.append("out of network")
     return paired_nodes
+
 
 def isEdgeBi(inFileSrc, inFileDest, edges):
     for edge in edges:
-        if edge.getSource() == inFileDest and edge.getDestination() == inFileSrc:
-            return True
-    return False
+        if edge.getSource() != inFileSrc and edge.getDestination() != inFileDest:
+            return False
+    return True
+
 
 def buildEdges(dataLN, nodes):
     edges = []
-    
-    # Create edges from dataLN
     for item in dataLN:
-        item[2] = item[2].replace("[", "").replace("]", "")
+        item[2] = item[2].replace("[", "")
+        item[2] = item[2].replace("]", "")
         for i in item[2].split("), "):
             i = i.split(", ")
             if i[0].replace("(","") != '':
-                source_node = nodes[item[0]]
-                dest_node = nodes[i[0].replace("(","")]
-                weight = int(i[1].replace(")",""))
-                edges.append(Edge(source_node, dest_node, weight))
-    
-    biedge = []
-    
-    # Check for bidirectional edges
-    for edge in edges:
-        if not isEdgeBi(edge.getSource(), edge.getDestination(), edges):
-            biedge.append(Edge(edge.getDestination(), edge.getSource(), edge.getMins()))
-    
-    return edges + biedge
+                #Edge -> nodes[i[0].replace("(","")]: para onde vai,  nodes[item[0]]: origem, i[1].replace(")",""):tempo
+                edges.append(Edge(nodes[item[0]], nodes[i[0].replace("(","")], int(i[1].replace(")",""))))
+                if isEdgeBi(item[0], i[0], edges) == False:
+                    edges.append(Edge(nodes[i[0].replace("(","")], nodes[item[0]], int(i[1].replace(")",""))))
+
+    return edges
 
 
 def buildNetwork(dataLN):
