@@ -2,28 +2,22 @@ from Edge import Edge
 from Graph import Graph
 from Node import Node
 from Digraph import Digraph
-def printPath(path):
-    """
-    Requires: path a list of nodes
-    """
-    result = ''
-    for i in range(len(path)):
-        result = result + str(path[i])
-        if i != len(path) - 1:
-            result = result + '->'
-    return result
-
-
+from constants import *
 def DFS(graph, start, end, path, shortest_paths, totalMins, minTotal=float('inf')):
     """
-    Depth first search in a directed graph with minutes accumulation
+    Perform a depth-first search in a directed graph to find the shortest paths.
 
-    Requires:
-    graph a Digraph;
-    start and end nodes;
-    path and shortest lists of nodes
-    Ensures:
-    a shortest path from start to end in graph along with total minutes
+    Parameters:
+    - graph (Digraph): The directed graph to search.
+    - start (Node): The starting node for the search.
+    - end (Node): The target node to reach.
+    - path (list): The current path of nodes being traversed.
+    - shortest_paths (list): The list of shortest paths found so far.
+    - totalMins (int): The total minutes accumulated along the current path.
+    - minTotal (float): The minimum total minutes for a path found so far (default is infinity).
+
+    Returns:
+    - list: A list of tuples, each containing a path (list of nodes) and the total minutes for that path.
     """
     path = path + [start]
     if start == end:
@@ -36,12 +30,23 @@ def DFS(graph, start, end, path, shortest_paths, totalMins, minTotal=float('inf'
             new_total_mins = totalMins + mins
             if len(shortest_paths) < 3 or new_total_mins <= shortest_paths[-1][1]:
                 shortest_paths = DFS(graph, node, end, path, shortest_paths, new_total_mins, minTotal)
-                shortest_paths.sort(key=lambda x: (x[1], -len(x[0]), x[0][1].name))
+                shortest_paths.sort(key=lambda x: (x[TIME], -len(x[PATH]), x[PATH][1].name))
                 shortest_paths = shortest_paths[:3]
     return shortest_paths
 
 
-def search2(graph, start, end):
+def search(graph, start, end):
+    """
+    Find the three shortest paths from the start node to the end node in the graph.
+
+    Parameters:
+    - graph (Digraph): The directed graph to search.
+    - start (Node): The starting node for the search.
+    - end (Node): The target node to reach.
+
+    Returns:
+    - list: A list of the three shortest paths found, each path is a tuple containing a list of nodes and the total minutes for that path.
+    """
     shortest_paths = []
     shortest_paths = DFS(graph, start, end, [], shortest_paths, 0)
     return shortest_paths

@@ -14,13 +14,13 @@ def safelevadas(inputFile1, inputFile2, outputFile):
     #Testing if the filePaths are the correct
     
     dataLN = readLN(filePath2)
-    a = readMyStations(filePath)
+    myStations = readMyStations(filePath)
     dig = buildNetwork(dataLN)
-    b = findSrcDestNodes(a, dig)
+    srcDestNodes = findSrcDestNodes(myStations, dig)
 
-    todasOsCaminhos = fazerFuncionar(b, dig)
+    todasOsCaminhos = findAllStations(srcDestNodes, dig)
 
-    writeMS(todasOsCaminhos, a, b, outputFile)
+    writeMS(todasOsCaminhos, myStations, srcDestNodes, outputFile)
     
     
 

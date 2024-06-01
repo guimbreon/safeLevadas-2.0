@@ -30,22 +30,4 @@ def writeMS(objeto, myStations, allStations, filePath):
 
     with open(filePath, "w") as fp:
         fp.write("\n".join(lines))
-            
-            
 
-#filePath = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myStations_A.txt"
-#filePath2 = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myLevadasNetwork.txt"
-
-
-filePath = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myStations_B.txt"
-filePath2 = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myLevadasNetwork.txt"
-
-dataLN = readLN(filePath2)
-a = readMyStations(filePath)
-dig = buildNetwork(dataLN)
-b = findSrcDestNodes(a, dig)
-
-todasOsCaminhos = fazerFuncionar(b, dig)
-
-filePath3 = "teste.txt"
-writeMS(todasOsCaminhos, a, b, filePath3)
