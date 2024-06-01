@@ -1,5 +1,11 @@
-# Lisboa - Braga
-12, Lisboa, Seixal, Porto, Faro
-Braga, # Lisboa - Braga
-19, Lisboa, Seixal, Pico Ruivo
-Braga, 
+#Canical - Marocos
+8, Canical, Marocos
+#Quatro Estradas - Calheta
+out of network
+#Canical - Santo da Serra
+19, Canical, Marocos, Santo da Serra
+40, Canical, Marocos, Portela, Santo da Serra
+#Monte - Barreira
+19, Monte, Poco da Neve, Barreira
+27, Monte, Barreira
+31, Monte, Poco da Neve, Quatro Estradas, Barreira

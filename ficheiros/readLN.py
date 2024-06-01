@@ -54,9 +54,9 @@ def findSrcDestNodes(srcs_and_dests, network):
             paired_nodes.append([src_node, dest_node])
         else:
             if not src_node:
-                paired_nodes.append("out of network")
+                paired_nodes.append(["out of network","sour"])
             if not dest_node:
-                paired_nodes.append("out of network")
+                paired_nodes.append(["out of network","dest"])
     return paired_nodes
 
 def isEdgeBi(inFileSrc, inFileDest, edges):
