@@ -7,6 +7,9 @@ def writeMS(objeto, myStations, allStations, filePath):
     lines = []
 
     for i in range(len(objeto)):
+        #i is the index of the lists, that will indicate which stations we are working on at the moment
+        #this will be used for myStations, objeto and allStations, since they are organized
+        #so that the items are coordinated, which means, "i" will always be related to the same src-dest search
         lines.append("# " + myStations[i][0] + " - " + myStations[i][1])
         if objeto[i] != "out of network" and objeto[i] != "do not communicate":
             for caminho, tempo in objeto[i]:
