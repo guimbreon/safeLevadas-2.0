@@ -17,8 +17,8 @@ def safelevadas(inputFile1, inputFile2, outputFile):
         outputFile (str): Path to the output file where the results will be written.
     """
     
-    dataLN = readLN(inputFile2) #reads the levada network file
-    myStations = readMyStations(inputFile1) #reads the stations it'll search
+    dataLN = readLN(inputFile1) #reads the levada network file
+    myStations = readMyStations(inputFile2) #reads the stations it'll search
     dig = buildNetwork(dataLN) #builds the nodes and edges from the inputFile2
     srcDestNodes = findSrcDestNodes(myStations, dig)
 
@@ -28,9 +28,9 @@ def safelevadas(inputFile1, inputFile2, outputFile):
     
     
 
-inputFile1 = "path"
-inputFile2 = "path"
-output = "path"
+inputFile1 = "l:/Aulas/Ano1/2Sem/ProgII/safeLevadasGroup5/testSets/testSet3/myLevadasNetwork.txt"
+inputFile2 = "l:/Aulas/Ano1/2Sem/ProgII/safeLevadasGroup5/testSets/testSet3/myStations.txt"
+output = "l:/Aulas/Ano1/2Sem/ProgII/safeLevadasGroup5/testes.txt"
     
 safelevadas(inputFile1, inputFile2, output)
 

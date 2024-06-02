@@ -1,5 +1,5 @@
 # Marocos - Porto
-Porto out of network
+Porto out of the network
 # Camacha - Poiso
 210, Camacha, Canical, Marocos, Lombada, Barreira, Funchal, Santana, Poiso
 230, Camacha, Canical, Marocos, Lombada, Portela, Monte, Barreira, Funchal, Santana, Poiso
