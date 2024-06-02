@@ -6,10 +6,6 @@
 10, Lombada, Portela
 14, Lombada, Marocos, Portela
 30, Lombada, Barreira, Monte, Portela
-# Lagoa do Vento - Monte
-83, Lagoa do Vento, Porto da Cruz, Lombada, Barreira, Monte
-83, Lagoa do Vento, Porto da Cruz, Lombada, Portela, Monte
-87, Lagoa do Vento, Porto da Cruz, Lombada, Marocos, Portela, Monte
 # Rabacal - Barreira
 73, Rabacal, Porto da Cruz, Lombada, Barreira
 93, Rabacal, Porto da Cruz, Lombada, Portela, Monte, Barreira

@@ -14,3 +14,5 @@ Porto da Cruz and Fátima do not communicate
 5, Penafiel, Espinhos
 55, Penafiel, Loures, Almada, Portalegre, Fátima, Espinhos
 55, Penafiel, Queluz, Santa Cruz, Portalegre, Fátima, Espinhos
+# Ribeira Seca - Funchal
+77, Ribeira Seca, Poiso, Santana, Funchal
