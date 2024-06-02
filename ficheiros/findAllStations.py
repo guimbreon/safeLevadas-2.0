@@ -1,6 +1,10 @@
+# 2023-2024 Programação 2 LTI
+# Grupo 5
+# 62372 Guilherme Soares
+# 62211 Vitória Correia
 from devolveLista import *
 from constants import * 
-from readLN import * 
+from readFiles import * 
 
 def findAllStations(myStations, dig):
     """
@@ -13,13 +17,13 @@ def findAllStations(myStations, dig):
     Returns:
     - list: A list of paths between the stations.
     """
-    todasOsCaminhos = []
+    allThePaths = []
     for pairOfStations in myStations:
-        if pairOfStations[0] != "out of network":
-            todasOsCaminhos.append(search(dig, pairOfStations[0], pairOfStations[1]))
+        if pairOfStations[0] != "out of the network":
+            allThePaths.append(search(dig, pairOfStations[0], pairOfStations[1]))
         else:
-            todasOsCaminhos.append("out of network")
-    for caminho in range(len(todasOsCaminhos)):
-        if not todasOsCaminhos[caminho]:
-            todasOsCaminhos[caminho] = "do not communicate"
-    return todasOsCaminhos
+            allThePaths.append("out of the network")
+    for caminho in range(len(allThePaths)):
+        if not allThePaths[caminho]:
+            allThePaths[caminho] = "do not communicate"
+    return allThePaths

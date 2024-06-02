@@ -1,3 +1,8 @@
+# 2023-2024 Programação 2 LTI
+# Grupo 5
+# 62372 Guilherme Soares
+# 62211 Vitória Correia
+
 class Edge(object):
     def __init__(self, src, dest, mins):
         """

@@ -1,4 +1,16 @@
-# Porto Moniz - Santana
-65, Porto Moniz, Calheta, Câmara de Lobos, Santana
-65, Porto Moniz, Ribeira Brava, Funchal, Santana
-100, Porto Moniz, Santana
+# Marocos - Porto
+Porto out of network
+# Camacha - Poiso
+210, Camacha, Canical, Marocos, Lombada, Barreira, Funchal, Santana, Poiso
+230, Camacha, Canical, Marocos, Lombada, Portela, Monte, Barreira, Funchal, Santana, Poiso
+230, Camacha, Canical, Marocos, Portela, Lombada, Barreira, Funchal, Santana, Poiso
+# Porto da Cruz - Fátima
+Porto da Cruz and Fátima do not communicate
+# Barreira - Portela
+20, Barreira, Lombada, Portela
+20, Barreira, Monte, Portela
+24, Barreira, Lombada, Marocos, Portela
+# Penafiel - Espinhos
+5, Penafiel, Espinhos
+55, Penafiel, Loures, Almada, Portalegre, Fátima, Espinhos
+55, Penafiel, Queluz, Santa Cruz, Portalegre, Fátima, Espinhos

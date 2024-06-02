@@ -1,6 +1,12 @@
-# Santa Cruz - Machico
-20, Santa Cruz, Machico
-80, Santa Cruz, Calheta, São Vicente, Porto Santo, Machico
-# Calheta - Porto Santo
-45, Calheta, São Vicente, Porto Santo
-55, Calheta, Santa Cruz, Machico, Porto Santo
+# Lombada - Campo do Pomar
+25, Lombada, Barreira, Monte, Campo do Pomar
+25, Lombada, Portela, Monte, Campo do Pomar
+29, Lombada, Marocos, Portela, Monte, Campo do Pomar
+# Penafiel - Portalegre
+30, Penafiel, Espinhos, Fátima, Portalegre
+30, Penafiel, Loures, Almada, Portalegre
+30, Penafiel, Queluz, Santa Cruz, Portalegre
+# Lisboa - Lagoa do Vento
+Lisboa out of the network
+# Camacha - Penafiel
+Camacha and Penafiel do not communicate

@@ -1,2 +1,0 @@
-#testa quando existem caminhos que têm a mesma duração e 
-passam pelo mesmo número de paragens

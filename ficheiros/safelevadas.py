@@ -1,5 +1,10 @@
+# 2023-2024 Programação 2 LTI
+# Grupo 5
+# 62372 Guilherme Soares
+# 62211 Vitória Correia
+
 import sys
-from readLN import *
+from readFiles import *
 from findAllStations import *
 from writeMS import *
 def safelevadas(inputFile1, inputFile2, outputFile):
@@ -25,7 +30,21 @@ def safelevadas(inputFile1, inputFile2, outputFile):
 
 filePath = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myStations_B.txt"
 filePath2 = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myLevadasNetwork.txt"
-filePath3 = "teste.txt"
+filePath3 = "pokem2on.txt"
 
 safelevadas(filePath, filePath2, filePath3)
-#safelevadas(sys.argv[1],sys.argv[2],sys.argv[3])
+
+if len(sys.argv) < 4:
+    print("""
+    The user should display the files in the command line in the following way:
+    python safeLevadas.py myLevadasNetwork.txt myStations.txt outputFile.txt
+
+    where:
+    - safeLevadas.py: this is the software you are running;
+    - myLevadasNetwork.txt: the path of the file with the levada paths;
+    - myStations.txt: the path of the file with the pairs of stations in each line;
+    - outputFile.txt: the path of the file where the output will be written.
+    """)
+else:
+    safelevadas(sys.argv[1],sys.argv[2],sys.argv[3])
+    

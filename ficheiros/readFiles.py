@@ -1,3 +1,7 @@
+# 2023-2024 Programação 2 LTI
+# Grupo 5
+# 62372 Guilherme Soares
+# 62211 Vitória Correia
 from devolveLista import *
 def readLN(filePath):
     """
@@ -78,9 +82,9 @@ def findSrcDestNodes(srcs_and_dests, network):
             paired_nodes.append([src_node, dest_node])
         else:
             if not src_node:
-                paired_nodes.append(["out of network", "sour"])
+                paired_nodes.append(["out of the network", "sour"])
             if not dest_node:
-                paired_nodes.append(["out of network", "dest"])
+                paired_nodes.append(["out of the network", "dest"])
     return paired_nodes
 
 

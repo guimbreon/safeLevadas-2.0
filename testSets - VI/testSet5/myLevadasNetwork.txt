@@ -1,6 +1,0 @@
-#Id, Name, Connected:
-A, Cedro, [(B, 100)]
-B, Boavista, [(C, 20)]
-C, Moinho, []
-D, Rabacal, [(E, 15)]
-E, Ponta do Sol, []

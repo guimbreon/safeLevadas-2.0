@@ -1,1 +1,0 @@
-#testa quando estações X e Y em X - Z e Z - Y, estão fora do network
