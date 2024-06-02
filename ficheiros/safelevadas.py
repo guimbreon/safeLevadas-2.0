@@ -4,7 +4,7 @@
 # 62211 Vitória Correia
 
 import sys
-from readFiles import *
+from fileProcessing import *
 from findAllStations import *
 from writeMS import *
 def safelevadas(inputFile1, inputFile2, outputFile):

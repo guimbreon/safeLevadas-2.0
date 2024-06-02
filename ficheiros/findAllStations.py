@@ -4,7 +4,7 @@
 # 62211 Vitória Correia
 from devolveLista import *
 from constants import * 
-from readFiles import * 
+from fileProcessing import * 
 
 def findAllStations(myStations, dig):
     """
