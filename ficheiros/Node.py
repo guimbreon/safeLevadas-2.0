@@ -7,7 +7,7 @@ class Node(object):
         - id (int): The unique identifier for the node.
         - name (str): The name of the node. Requires that name is a string.
         """
-        self.name = name
+        self._name = name
         self._id = id
         
     def getName(self):
@@ -17,7 +17,7 @@ class Node(object):
         Returns:
         - str: The name of the node.
         """
-        return self.name
+        return self._name
     
     def getId(self):
         """
@@ -35,4 +35,4 @@ class Node(object):
         Returns:
         - str: The name of the node.
         """
-        return self.name
+        return self._name

@@ -11,16 +11,15 @@ def safelevadas(inputFile1, inputFile2, outputFile):
         inputFile2 (str): Path to the input file containing pairs of station names, one pair per line.
         outputFile (str): Path to the output file where the results will be written.
     """
-    #Testing if the filePaths are the correct
     
-    dataLN = readLN(filePath2)
-    myStations = readMyStations(filePath)
-    dig = buildNetwork(dataLN)
+    dataLN = readLN(inputFile2) #reads the levada network file
+    myStations = readMyStations(inputFile1) #reads the stations it'll search
+    dig = buildNetwork(dataLN) #builds the nodes and edges from the inputFile2
     srcDestNodes = findSrcDestNodes(myStations, dig)
 
-    todasOsCaminhos = findAllStations(srcDestNodes, dig)
+    allPaths = findAllStations(srcDestNodes, dig)
 
-    writeMS(todasOsCaminhos, myStations, srcDestNodes, outputFile)
+    writeMS(allPaths, myStations, srcDestNodes, outputFile)
     
     
 

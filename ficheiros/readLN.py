@@ -1,19 +1,31 @@
 from devolveLista import *
-
 def readLN(filePath):
+    """
+    Read and process a file to extract lines of data.
+
+    Parameters:
+    - filePath (str): The path to the input file containing the data.
+
+    Returns:
+    - list: A list of processed lines, where each line is split into components.
+    """
     fp = open(filePath, 'r')
     lines = []
     for item in fp:
-        if not item.startswith("#"):#assim sabemos q é a linha do comentário
-            lines.append(item.strip().split(", ", 2))  #com 2 splits maximos, para ele n bugar com os ", " das listas
+        if not item.startswith("#"):  # Check if the line has an #
+            lines.append(item.strip().split(", ", 2))  # Split with a maximum of 2 to avoid splitting lists
     return lines
 
-           
+
 def readMyStations(fileMyStations):
     """
-    Esta função serve para extrair as estações de origem e destino contidas no arquivo fileMyStations.
-    Retorna uma lista de listas, onde cada lista contem os nomes dos nodes
-    de origem e destino
+    Extract source and destination stations from a file.
+
+    Parameters:
+    - fileMyStations (str): The path to the file containing the station data.
+
+    Returns:
+    - list: A list of lists, where each sublist contains the source and destination station names.
     """
     srcs_and_dests = []
     with open(fileMyStations, "r") as file:
@@ -21,67 +33,100 @@ def readMyStations(fileMyStations):
             src_name, dest_name = line.strip().split("-")
             srcs_and_dests.append([src_name.strip(), dest_name.strip()])
     return srcs_and_dests
-    
+
 
 def buildNodes(dataLN):
+    """
+    Build nodes from the provided data.
+
+    Parameters:
+    - dataLN (list): A list of data where each item contains node information.
+
+    Returns:
+    - dict: A dictionary of nodes, where keys are node names and values are Node objects.
+    """
     nodes = {}
     for item in dataLN:
-        nodes[item[0]] = Node(item[0],item[1])
+        nodes[item[0]] = Node(item[0], item[1])
     return nodes
 
 
 def findSrcDestNodes(srcs_and_dests, network):
     """
-    Esta função recebe uma lista de pares (src, dest) e um objeto network que contém nós.
-    Retorna uma lista de listas, onde cada sublista contém dois objetos Node que representam a origem e o destino.
+    Find source and destination nodes in the network.
+
+    Parameters:
+    - srcs_and_dests (list): A list of pairs (src, dest) representing source and destination names.
+    - network (object): An object containing the network nodes.
+
+    Returns:
+    - list: A list of lists, where each sublist contains two Node objects representing the source and destination.
     """
     paired_nodes = []
     
-    # Iterar sobre cada par
     for src_name, dest_name in srcs_and_dests:
         src_node = None
         dest_node = None
         
-        # Procurar os nós correspondentes na rede
         for node in network._nodes:
             if node.getName() == src_name:
                 src_node = node
             if node.getName() == dest_name:
                 dest_node = node
                 
-        # Adicionar o par (src_node, dest_node) à lista se ambos forem encontrados
         if src_node and dest_node:
             paired_nodes.append([src_node, dest_node])
         else:
             if not src_node:
-                paired_nodes.append(["out of network","sour"])
+                paired_nodes.append(["out of network", "sour"])
             if not dest_node:
-                paired_nodes.append(["out of network","dest"])
+                paired_nodes.append(["out of network", "dest"])
     return paired_nodes
 
+
 def isEdgeBi(inFileSrc, inFileDest, edges):
+    """
+    Check if an edge is bidirectional.
+
+    Parameters:
+    - inFileSrc (Node): The source node from the file.
+    - inFileDest (Node): The destination node from the file.
+    - edges (list): A list of edges to check against.
+
+    Returns:
+    - bool: True if a bidirectional edge exists, False otherwise.
+    """
     for edge in edges:
         if edge.getSource() == inFileDest and edge.getDestination() == inFileSrc:
             return True
     return False
 
+
 def buildEdges(dataLN, nodes):
+    """
+    Build edges from the provided data.
+
+    Parameters:
+    - dataLN (list): A list of data where each item contains edge information.
+    - nodes (dict): A dictionary of nodes where keys are node names and values are Node objects.
+
+    Returns:
+    - list: A list of Edge objects including bidirectional edges.
+    """
     edges = []
     
-    # Create edges from dataLN
     for item in dataLN:
-        item[2] = item[2].replace("[", "").replace("]", "")
-        for i in item[2].split("), "):
-            i = i.split(", ")
-            if i[0].replace("(","") != '':
+        item[2] = item[2].strip("[]")
+        for pair in item[2].split("), "):
+            node_info = pair.strip("()").split(", ")
+            if node_info[0]:
                 source_node = nodes[item[0]]
-                dest_node = nodes[i[0].replace("(","")]
-                weight = int(i[1].replace(")",""))
+                dest_node = nodes[node_info[0]]
+                weight = int(node_info[1])
                 edges.append(Edge(source_node, dest_node, weight))
     
     biedge = []
     
-    # Check for bidirectional edges
     for edge in edges:
         if not isEdgeBi(edge.getSource(), edge.getDestination(), edges):
             biedge.append(Edge(edge.getDestination(), edge.getSource(), edge.getMins()))
@@ -90,6 +135,15 @@ def buildEdges(dataLN, nodes):
 
 
 def buildNetwork(dataLN):
+    """
+    Build a network (directed graph) from the provided data.
+
+    Parameters:
+    - dataLN (list): A list of data where each item contains information to build the network.
+
+    Returns:
+    - Digraph: A directed graph containing the nodes and edges from the data.
+    """
     g = Digraph()
     nodes = buildNodes(dataLN)
     edges = buildEdges(dataLN, nodes)
@@ -100,8 +154,4 @@ def buildNetwork(dataLN):
     for edge in edges:
         g.addEdge(edge)
     
-    return g  
-
-    
-    
-    
+    return g

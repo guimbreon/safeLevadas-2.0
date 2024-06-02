@@ -4,21 +4,21 @@ class Edge(object):
         Initializes an edge from src to dest with a given mins value.
         Requires: src and dest are Nodes.
         """
-        self.src = src
-        self.dest = dest
+        self._src = src
+        self._dest = dest
         self._mins = mins
         
     def getSource(self):
         """
         Returns the source node.
         """
-        return self.src
+        return self._src
     
     def getDestination(self):
         """
         Returns the destination node.
         """
-        return self.dest
+        return self._dest
     
     def getMins(self):
         """
