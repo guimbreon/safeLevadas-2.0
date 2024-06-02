@@ -24,6 +24,6 @@ def findAllStations(myStations, dig):
         else:
             allThePaths.append("out of the network")
     for caminho in range(len(allThePaths)):
-        if not allThePaths[caminho]:
+        if not allThePaths[caminho]: #if the path is empty, it means they aren't connected.
             allThePaths[caminho] = "do not communicate"
     return allThePaths

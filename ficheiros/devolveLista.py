@@ -32,10 +32,10 @@ def DFS(graph, start, end, path, shortest_paths, totalMins, minTotal=float('inf'
     for node in graph.childrenOf(start):
         if node not in path:
             mins = graph.getEdgesMins()[(start, node)]
-            new_total_mins = totalMins + mins
+            new_total_mins = totalMins + mins # get the totalMins taken from A -> B
             if len(shortest_paths) < 3 or new_total_mins <= shortest_paths[-1][1]:
                 shortest_paths = DFS(graph, node, end, path, shortest_paths, new_total_mins, minTotal)
-                shortest_paths.sort(key=lambda x: (x[TIME], -len(x[PATH]), x[PATH][1]._name))
+                shortest_paths.sort(key=lambda x: (x[TIME], -len(x[PATH]), x[PATH][1]._name)) #sorting by the specifications
                 shortest_paths = shortest_paths[:3]
     return shortest_paths
 

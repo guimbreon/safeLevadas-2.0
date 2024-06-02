@@ -81,9 +81,9 @@ def findSrcDestNodes(srcs_and_dests, network):
         if src_node and dest_node:
             paired_nodes.append([src_node, dest_node])
         else:
-            if not src_node:
+            if not src_node: # if the src_node doesn't exist, it'll append information getting the user to know that
                 paired_nodes.append(["out of the network", "sour"])
-            if not dest_node:
+            if not dest_node: # if the src_node doesn't exist, it'll append information getting the user to know that
                 paired_nodes.append(["out of the network", "dest"])
     return paired_nodes
 
@@ -101,7 +101,7 @@ def isEdgeBi(inFileSrc, inFileDest, edges):
     - bool: True if a bidirectional edge exists, False otherwise.
     """
     for edge in edges:
-        if edge.getSource() == inFileDest and edge.getDestination() == inFileSrc:
+        if edge.getSource() == inFileDest and edge.getDestination() == inFileSrc: #check if the edge exists or not!
             return True
     return False
 
@@ -120,15 +120,18 @@ def buildEdges(dataLN, nodes):
     edges = []
     
     for item in dataLN:
+        #cleaning the data
         item[2] = item[2].strip("[]")
         for pair in item[2].split("), "):
             node_info = pair.strip("()").split(", ")
             if node_info[0]:
+                #here it'll build the Edges themselves
                 source_node = nodes[item[0]]
                 dest_node = nodes[node_info[0]]
                 weight = int(node_info[1])
                 edges.append(Edge(source_node, dest_node, weight))
     
+    #here it'll build all edges bidirectionally
     biedge = []
     
     for edge in edges:
@@ -152,10 +155,10 @@ def buildNetwork(dataLN):
     nodes = buildNodes(dataLN)
     edges = buildEdges(dataLN, nodes)
     
-    for node in nodes:
+    for node in nodes: #add all nodes to the digraph
         g.addNode(nodes[node])
         
-    for edge in edges:
+    for edge in edges: #add all edges to the digraph
         g.addEdge(edge)
     
     return g
