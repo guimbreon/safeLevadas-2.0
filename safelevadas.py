@@ -26,16 +26,10 @@ def safelevadas(inputFile1, inputFile2, outputFile):
 
     writeMS(allPaths, myStations, srcDestNodes, outputFile)
     
-    
 
-inputFile1 = "l:/Aulas/Ano1/2Sem/ProgII/safeLevadasGroup5/testSets/testSet3/myLevadasNetwork.txt"
-inputFile2 = "l:/Aulas/Ano1/2Sem/ProgII/safeLevadasGroup5/testSets/testSet3/myStations.txt"
-output = "l:/Aulas/Ano1/2Sem/ProgII/safeLevadasGroup5/testes.txt"
-    
-safelevadas(inputFile1, inputFile2, output)
-
-"""if len(sys.argv) < 4:
+if len(sys.argv) < 4:
     print(
+    """
     The user should display the files in the command line in the following way:
     python safeLevadas.py myLevadasNetwork.txt myStations.txt outputFile.txt
 
@@ -44,7 +38,6 @@ safelevadas(inputFile1, inputFile2, output)
     - myLevadasNetwork.txt: the path of the file with the levada paths;
     - myStations.txt: the path of the file with the pairs of stations in each line;
     - outputFile.txt: the path of the file where the output will be written.
-    )
+    """)
 else:
     safelevadas(sys.argv[1],sys.argv[2],sys.argv[3])
-    """
