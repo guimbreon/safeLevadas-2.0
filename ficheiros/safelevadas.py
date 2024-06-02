@@ -27,13 +27,6 @@ def safelevadas(inputFile1, inputFile2, outputFile):
     writeMS(allPaths, myStations, srcDestNodes, outputFile)
     
     
-
-filePath = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myStations_B.txt"
-filePath2 = "l:/Aulas/Ano1/2Sem/ProgII/prog2_Proj2_LTI/test_set/myLevadasNetwork.txt"
-filePath3 = "pokem2on.txt"
-
-safelevadas(filePath, filePath2, filePath3)
-
 if len(sys.argv) < 4:
     print("""
     The user should display the files in the command line in the following way:
