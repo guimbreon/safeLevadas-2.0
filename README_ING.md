@@ -83,11 +83,3 @@ The software consists of the following modules:
     infoToFiles.py: Offers functions to write information to files.
     safeLevadas.py: Main program that uses the previous modules to implement the safeLevadas application.
 ```
-## Contributors
-```less
-    Student Name 1
-    Student Name 2
-```
-## Implementation Report
-
-Refer to the implementation report (relGroupN.pdf) for details on the individual contributions of each group member, extra implemented features (if applicable), non-implemented features (if applicable), and known bugs (if applicable).
