@@ -1,7 +1,8 @@
 # Projeto safeLevadas
 
-This README is also available in English. Click here
+This README is also available in English. [Click here](README-PT.md)
 
+This README is also available in Portuguese. [Click here](README-PT.md)
 ## Contexto
 
 O projeto safeLevadas é desenvolvido no contexto do curso de Programação 2 (LTI) do Departamento de Informática da Faculdade de Ciências de Lisboa, no ano letivo 2023/2024. Este projeto tem como objetivo criar uma aplicação em Python 3 chamada safeLevadas, destinada a encontrar os percursos mais rápidos entre dois pontos na rede de levadas da ilha da Madeira, melhorando o suporte e resgate de caminhantes.
