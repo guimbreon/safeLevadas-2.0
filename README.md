@@ -1,6 +1,6 @@
 # safeLevadas Project
 
-This README is also available in Portuguese. Click here
+This README is also available in Portuguese. [Click here](README-PT.md)
 
 ## Context
 
