@@ -1,6 +1,6 @@
 # safeLevadas Project
 
-Este README também está disponível em português. [Click here](README-PT.md)
+Também pode consultar este README em português. [Click here](README-PT.md)
 
 ## Context
 
